@@ -16,6 +16,31 @@
 # production
 /build
 
+# Solana CLI files
+solana-wallet.json
+solana-program.json
+
+# Anchor framework (for Solana smart contracts)
+.anchor/
+.meteor/
+target/
+programs/**/target/
+tests/**/target/
+programs/**/node_modules/
+
+# Rust build output
+target/
+Cargo.lock
+Cargo.toml.orig
+
+# Solidity & Hardhat (if applicable)
+artifacts/
+cache/
+hardhat.config.ts
+hardhat.config.js
+foundry.toml
+forge.out/
+
 # misc
 .DS_Store
 *.pem
@@ -35,3 +60,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 tmp
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+

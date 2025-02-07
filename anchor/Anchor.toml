@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-simplesolanacrud = "coUnmi3oBUtwtd9fjeAvSsJssXh5A5xyPbhpewyzRVF"
+simplesolanacrud = "qJYHz8JL6i3ftmds7hGirQqJYHz8JL6i3ftmds7hGir"
 
 [registry]
 url = "https://api.apr.dev"
