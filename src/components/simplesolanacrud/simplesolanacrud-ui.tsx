@@ -4,42 +4,50 @@ import { Keypair, PublicKey } from '@solana/web3.js'
 import { useMemo } from 'react'
 import { ellipsify } from '../ui/ui-layout'
 import { ExplorerLink } from '../cluster/cluster-ui'
-import { useSimplesolanacrudProgram, useSimplesolanacrudProgramAccount } from './simplesolanacrud-data-access'
+import { 
+  useSimplesolanacrudProgram,
+  useSimplesolanacrudProgramAccount 
+} from './simplesolanacrud-data-access'
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useState } from "react";
 
 export function SimplesolanacrudList() {
-  const { accounts, getProgramAccount } = useSimplesolanacrudProgram()
+  const { accounts, getProgramAccount } = useSimplesolanacrudProgram();
 
   if (getProgramAccount.isLoading) {
-    return <span className="loading loading-spinner loading-lg"></span>
+    return <span className="loading loading-spinner loading-lg"></span>;
   }
   if (!getProgramAccount.data?.value) {
     return (
-      <div className="alert alert-info flex justify-center">
-        <span>Program account not found. Make sure you have deployed the program and are on the correct cluster.</span>
+      <div className="flex justify-center alert alert-info">
+        <span>
+          Program account not found. Make sure you have deployed the program and
+          are on the correct cluster.
+        </span>
       </div>
-    )
+    );
   }
   return (
-    <div className={'space-y-6'}>
+    <div className={"space-y-6"}>
       {accounts.isLoading ? (
         <span className="loading loading-spinner loading-lg"></span>
       ) : accounts.data?.length ? (
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid gap-4 md:grid-cols-2">
           {accounts.data?.map((account) => (
-            <SimplesolanacrudCard key={account.publicKey.toString()} account={account.publicKey} />
+            <JournalCard
+              key={account.publicKey.toString()}
+              account={account.publicKey}
+            />
           ))}
         </div>
       ) : (
         <div className="text-center">
-          <h2 className={'text-2xl'}>No accounts</h2>
+          <h2 className={"text-2xl"}>No accounts</h2>
           No accounts found. Create one above to get started.
         </div>
       )}
     </div>
-  )
-}
+  );}
 export function SimplesolanacrudCreate() {
   const { createEntry } = useSimplesolanacrudProgram();
   const { publicKey } = useWallet();
